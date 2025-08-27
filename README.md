@@ -42,8 +42,10 @@ The dataset contains retail sales transactions with the following relevant colum
 
 - ### 1. Exploratory Data Analysis (EDA) with PySpark
     - Why PySpark?
+      
       PySpark is used because it can handle large datasets efficiently compared to pandas.
       In this project, the dataset is big enough that using Spark avoids memory issues.
+      
     - Steps implemented:
       - Loading the dataset into a Spark DataFrame.
       - Performing summary statistics (mean, median, min, max).
