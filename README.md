@@ -93,3 +93,4 @@ The dataset contains retail sales transactions with the following relevant colum
 
 ## Forecast Plot for chairs
 
+![Forecast Plot](outputs/forecast(chairs).png)
