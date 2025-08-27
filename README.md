@@ -55,7 +55,9 @@ The dataset contains retail sales transactions with the following relevant colum
 
 - ### 2. Forecasting with Prophet
     - **Why Prophet?**
-      Prophet is designed for business time series (with trends, seasonality, holidays). It is easy to use, robust, and interpretable. 
+      
+      Prophet is designed for business time series (with trends, seasonality, holidays). It is easy to use, robust, and interpretable.
+      
     - **Steps implemented:**
       - Installing and importing Prophet.
       - Preparing the dataset from PySpark output:
@@ -66,7 +68,9 @@ The dataset contains retail sales transactions with the following relevant colum
       - Generating a future dataframe (e.g., next 365 days).
       - Forecasting future values.
       - Visualizing results with Prophet’s built-in plotting functions.
+        
     - **Connection to EDA**
+      
       Prophet cannot work directly on raw messy data. The EDA step ensured the dataset was cleaned, time-indexed, and aggregated, making it directly usable by Prophet.
 
 ---
