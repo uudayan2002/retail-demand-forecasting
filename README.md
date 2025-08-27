@@ -1,13 +1,14 @@
 # Retail Demand Forecasting using PySpark & Prophet
 
 ## Project Overview
-This project demonstrates **retail demand forecasting** using a large-scale sales dataset.  
-We leverage **PySpark** for big data preprocessing and **Facebook Prophet** for time series forecasting.  
+This project demonstrates how to combine big data processing with **PySpark** and time series forecasting with **Prophet**.
 
-The goal is to:
-  - Analyze sales trends.  
-  - Identify seasonality and demand cycles.  
-  - Forecast future demand for product sub-categories such as **Chairs, Tables, Binders, Phones**, etc.  
+We first perform **Exploratory Data Analysis (EDA)** on a large dataset using **PySpark** for scalability, and then apply **Prophet (by Facebook)** to forecast future values.
+
+The project highlights:
+  - How **PySpark** helps in cleaning, transforming, and summarizing large datasets.
+  - How **Prophet** uses those prepared time series features to generate accurate forecasts.  
+  - How **EDA** and forecasting are connected in a real-world data science pipeline.
 
 ---
 
@@ -28,59 +29,56 @@ The dataset contains retail sales transactions with the following relevant colum
 ---
 
 ## Tools & Libraries Used
+  - **Python 3**
   - **PySpark** → Distributed big data processing.  
   - **Prophet** → Time series forecasting.  
   - **Matplotlib / Seaborn** → Data visualization.  
-  - **Pandas** → Lightweight manipulation after Spark aggregations.  
+  - **Pandas** → Lightweight manipulation after Spark aggregations.
+  - **Jupyter Notebook** 
 
 ---
 
 ## Workflow
 
-- ### Step 1: Data Loading & Cleaning (PySpark)
-    - Imported dataset into Spark DataFrame.  
-    - Converted date columns into timestamp format.  
-    - Selected relevant columns (**Order Date, Sales, Sub-Category**).  
-    - Handled missing values and inconsistencies.  
+- ### 1. Exploratory Data Analysis (EDA) with PySpark
+    - Why PySpark?
+      PySpark is used because it can handle large datasets efficiently compared to pandas.
+      In this project, the dataset is big enough that using Spark avoids memory issues.
+    - Steps implemented:
+      - Loading the dataset into a Spark DataFrame.
+      - Performing summary statistics (mean, median, min, max).
+      - Cleaning and handling missing/null values.
+      - Converting date columns into proper formats.
+      - Aggregating values over time (e.g., daily/weekly totals).
+    - Connection to Forecasting:
+      This stage ensures the dataset is structured into a time series format (with ds = date/time and y = target variable), which Prophet requires.
 
-- ### Step 2: Exploratory Data Analysis (EDA)
-    - Identified top-selling sub-categories.  
-    - Analyzed sales distribution across years.  
-    - Visualized growth trends over time.  
-
-- ### Step 3: Time Series Preparation
-    - Focused on one sub-category (e.g., **Chairs**) for initial forecast.  
-    - Grouped data by **Order Date**, aggregated Sales.  
-    - Renamed columns to Prophet format:  
-      - `ds` = Date  
-      - `y` = Sales  
-
-- ### Step 4: Forecasting with Prophet
-    - Initialized model: `Prophet(daily_seasonality=True)`.  
-    - Fitted on historical data.  
-    - Generated forecasts for the next **180 days**.  
-
-- ### Step 5: Visualization of Forecast
-    - **Forecast Plot**: Actual vs Predicted sales with confidence intervals.  
-    - **Component Plots**: Trend, Seasonality, Residuals.  
-
-- ### Step 6: Scaling to Multiple Sub-Categories
-    - Repeated process for other sub-categories (**Tables, Phones, Binders**).  
-    - Compared forecasts across product lines.  
-    - Insights supported inventory planning & demand management.  
+- ### 2. Forecasting with Prophet
+    - **Why Prophet?**
+      
+      Prophet is designed for business time series (with trends, seasonality, holidays). It is easy to use, robust, and interpretable.
+      
+    - **Steps implemented:**
+      - Installing and importing Prophet.
+      - Preparing the dataset from PySpark output:
+        - Rename columns to Prophet format:
+          - ds → Date column
+          - y → Value to forecast
+      - Creating a Prophet model and fitting it to the cleaned time series data.
+      - Generating a future dataframe (e.g., next 365 days).
+      - Forecasting future values.
+      - Visualizing results with Prophet’s built-in plotting functions.
+        
+    - **Connection to EDA**
+      
+      Prophet cannot work directly on raw messy data. The EDA step ensured the dataset was cleaned, time-indexed, and aggregated, making it directly usable by Prophet.
 
 ---
 
 ## Results & Insights
-- ### Example: Chairs
-    - Historical sales show consistent growth.  
-    - Seasonal spikes detected (quarterly corporate purchases).  
-    - Prophet predicts **steady demand rise** with periodic fluctuations.  
-
-- ### General Observations
-    - **Office Supplies** → Frequent smaller orders.  
-    - **Technology (Phones, Accessories)** → Sharp spikes (promotions/new launches).  
-    - **Furniture** → Long-term growth (useful for warehouse planning).  
+- **Trends Identified**: The model highlights underlying trends, seasonality, and growth patterns in the dataset.
+- **Forecasting**: Future values are predicted with confidence intervals, visualized using Prophet’s plotting tools.  
+- **Scalability**: Using PySpark ensures this approach works for datasets much larger than what pandas can handle.
 
 ---
 
