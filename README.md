@@ -41,18 +41,19 @@ The dataset contains retail sales transactions with the following relevant colum
 ## Workflow
 
 - ### 1. Exploratory Data Analysis (EDA) with PySpark
-    - Why PySpark?
+    - **Why PySpark?**
       
       PySpark is used because it can handle large datasets efficiently compared to pandas.
       In this project, the dataset is big enough that using Spark avoids memory issues.
       
-    - Steps implemented:
+    - **Steps implemented:**
       - Loading the dataset into a Spark DataFrame.
       - Performing summary statistics (mean, median, min, max).
       - Cleaning and handling missing/null values.
       - Converting date columns into proper formats.
       - Aggregating values over time (e.g., daily/weekly totals).
-    - Connection to Forecasting:
+  
+    - **Connection to Forecasting:**
       This stage ensures the dataset is structured into a time series format (with ds = date/time and y = target variable), which Prophet requires.
 
 - ### 2. Forecasting with Prophet
