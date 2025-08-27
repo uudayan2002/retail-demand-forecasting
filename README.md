@@ -38,15 +38,15 @@ The dataset contains retail sales transactions with the following relevant colum
 ## Workflow
 
 ### 🔹 Step 1: Data Loading & Cleaning (PySpark)
-  - Imported dataset into Spark DataFrame.  
-  - Converted date columns into timestamp format.  
-  - Selected relevant columns (**Order Date, Sales, Sub-Category**).  
-  - Handled missing values and inconsistencies.  
+    - Imported dataset into Spark DataFrame.  
+    - Converted date columns into timestamp format.  
+    - Selected relevant columns (**Order Date, Sales, Sub-Category**).  
+    - Handled missing values and inconsistencies.  
 
 ### 🔹 Step 2: Exploratory Data Analysis (EDA)
-  - Identified top-selling sub-categories.  
-  - Analyzed sales distribution across years.  
-  - Visualized growth trends over time.  
+    - Identified top-selling sub-categories.  
+    - Analyzed sales distribution across years.  
+    - Visualized growth trends over time.  
 
 ### 🔹 Step 3: Time Series Preparation
   - Focused on one sub-category (e.g., **Chairs**) for initial forecast.  
