@@ -37,34 +37,34 @@ The dataset contains retail sales transactions with the following relevant colum
 
 ## Workflow
 
-###🔹 Step 1: Data Loading & Cleaning (PySpark)
+- ### 🔹 Step 1: Data Loading & Cleaning (PySpark)
     - Imported dataset into Spark DataFrame.  
     - Converted date columns into timestamp format.  
     - Selected relevant columns (**Order Date, Sales, Sub-Category**).  
     - Handled missing values and inconsistencies.  
 
-###🔹 Step 2: Exploratory Data Analysis (EDA)
+- ###🔹 Step 2: Exploratory Data Analysis (EDA)
     - Identified top-selling sub-categories.  
     - Analyzed sales distribution across years.  
     - Visualized growth trends over time.  
 
-###🔹 Step 3: Time Series Preparation
+- ###🔹 Step 3: Time Series Preparation
     - Focused on one sub-category (e.g., **Chairs**) for initial forecast.  
     - Grouped data by **Order Date**, aggregated Sales.  
     - Renamed columns to Prophet format:  
       - `ds` = Date  
       - `y` = Sales  
 
-###🔹 Step 4: Forecasting with Prophet
+- ###🔹 Step 4: Forecasting with Prophet
     - Initialized model: `Prophet(daily_seasonality=True)`.  
     - Fitted on historical data.  
     - Generated forecasts for the next **180 days**.  
 
-###🔹 Step 5: Visualization of Forecast
+- ###🔹 Step 5: Visualization of Forecast
     - **Forecast Plot**: Actual vs Predicted sales with confidence intervals.  
     - **Component Plots**: Trend, Seasonality, Residuals.  
 
-###🔹 Step 6: Scaling to Multiple Sub-Categories
+- ###🔹 Step 6: Scaling to Multiple Sub-Categories
     - Repeated process for other sub-categories (**Tables, Phones, Binders**).  
     - Compared forecasts across product lines.  
     - Insights supported inventory planning & demand management.  
@@ -72,12 +72,12 @@ The dataset contains retail sales transactions with the following relevant colum
 ---
 
 ## Results & Insights
-###🔸 Example: Chairs
+- ###🔸 Example: Chairs
     - Historical sales show consistent growth.  
     - Seasonal spikes detected (quarterly corporate purchases).  
     - Prophet predicts **steady demand rise** with periodic fluctuations.  
 
-###🔸 General Observations
+- ###🔸 General Observations
     - **Office Supplies** → Frequent smaller orders.  
     - **Technology (Phones, Accessories)** → Sharp spikes (promotions/new launches).  
     - **Furniture** → Long-term growth (useful for warehouse planning).  
